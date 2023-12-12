@@ -7,7 +7,7 @@ date_default_timezone_set($settings['Timezone']);
 $baseUri = $settings['BaseURI'] . 'addressbookserver.php';
 
 /* Database */
-$pdo = new \PDO('mysql:dbname=' . $settings['DBName'] . ';host=' . $settings['DBHost]' , $settings['DBUser]' , $settings['DBPass]' );
+$pdo = new \PDO('mysql:dbname=' . $settings['DBName'] . ';host=' . $settings['DBHost'] , $settings['DBUser'] , $settings['DBPass'] );
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Autoloader
