@@ -7,7 +7,7 @@ Clone this repo or download the zip, then copy/move the files in it to the same 
 
 See sabre/dav documentation for requirements (PHP, Composer, etc).
 
-This tool currently requires MySQL (SQLite option supported by sabre may be included here later). Future version may also assist with Composer installation.
+This tool currently requires MySQL (SQLite option supported by sabre may be included here later). Future version may also assist with Composer installation. Feel free to reach out for assistance.
 
 Immediate development priorities are functionality for user addition, password/email changes, calendar and address book management.
 
