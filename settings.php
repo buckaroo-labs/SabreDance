@@ -12,5 +12,5 @@ $settings['DBName']='sabredavdb';
 $settings['DBUser']='username';
 $settings['DBPass']='paSSw0rd';
 $settings['DBHost']='127.0.0.1';
-include(' settingsDB.php');
+include('settingsDB.php');
 ?>
