@@ -9,4 +9,6 @@ See sabre/dav documentation for requirements (PHP, Composer, etc).
 
 This tool currently requires MySQL (SQLite option supported by sabre may be included here later). Future version may also assist with Composer installation.
 
+Immediate development priorities are functionality for user addition, password/email changes, calendar and address book management.
+
 Tested on PHP 8.1
