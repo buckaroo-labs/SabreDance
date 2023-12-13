@@ -15,8 +15,9 @@ use Sabre\DAV\Auth;
 $pdo = new \PDO('mysql:dbname=' . $settings['DBName'] . ';host=' . $settings['DBHost'] , $settings['DBUser'] , $settings['DBPass'] );
 $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $authBackend = new Auth\Backend\PDO($pdo);
-$authBackend->setRealm( $settings['Realm]' );
+$authBackend->setRealm( $settings['Realm'] );
 $authPlugin = new Auth\Plugin($authBackend);
 $server->addPlugin($authPlugin);
 $server->exec();
 ?>
+
