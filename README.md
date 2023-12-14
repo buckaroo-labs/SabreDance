@@ -11,4 +11,4 @@ This tool currently requires MySQL (SQLite option supported by sabre may be incl
 
 Immediate development priorities are functionality for user addition, password/email changes, calendar and address book management.
 
-Tested on PHP 8.1
+Tested on PHP 8.1 and sabre/dav 3.2.0
