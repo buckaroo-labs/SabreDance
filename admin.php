@@ -120,15 +120,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!isPOSTedClean('davmail'))  $badPost=true;
 	//
 	if (!$badPost) {
-		$username=$_POST['davuser'] ;
-		$dispname=$_POST['davname'] ;
-		$email=$_POST['davmail'] ;
-		$hash= md5($username . ':' . $settings['Realm'] . ':' . $_POST['davpass']);
-		$sql1="INSERT INTO users (username,digesta1) VALUES ('" . $username ."','" . $hash . "');";
+                $username=$_POST['davuser'] ;
+                $dispname=$_POST['davname'] ;
+                $email=$_POST['davmail'] ;
+                $hash= md5($username . ':' . $settings['Realm'] . ':' . $_POST['davpass']);
+                $sql1="INSERT INTO users (username,digesta1) VALUES ('" . $username ."','" . $hash . "');";
 
-		$sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
-		$conn->query($sql1) or die ('Unexpected error inserting into users table');;
-		$conn->query($sql2) or die ('Unexpected error inserting into principals table');;
+                $sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
+                $sql3="INSERT INTO addressbooks (principaluri, displayname, uri, description, synctoken) VALUES ('principals/" . $username ."','default','default','Default address book','1')";
+                $conn->query($sql1) or die ('Unexpected error inserting into users table');
+                $conn->query($sql2) or die ('Unexpected error inserting into principals table');
+                $conn->query($sql3) or die ('Unexpected error inserting into addressbooks table');
 
 	} else {
 		die ("<br>Unexpected or missing character input. Usernames and passwords should be alphanumeric with optional dot, dash or underscore characters. Spaces are allowed only for display name." . $hint);
