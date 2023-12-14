@@ -229,22 +229,6 @@ if (!$failed) {
 	  echo 'Error: ' .$e->getMessage();
 	  reportAndExit();
 	}
-/*
-	$sql="SELECT p.id, p.display_name, c.name as 'tag',  x.ext_id handle, c.lastmodified FROM `soft_categories`  c
-	left join dbr6ql6lhvd8wp.person p on c.name=p.hashtag
-	left join dbr6ql6lhvd8wp.profile x on p.id=x.person_id and  x.network_id=10
-	where c.id_uppercat=156
-	order by x.ext_id;";
-
-	$result = $mysqli->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
-	while ($row=$result->fetch_assoc()) {
-	$row_out='<tr><td>' . implode('</td><td>',$row) . '</td></tr>';
-	echo $row_out . "\n";
-	}
-
-*/
-
-
 
 }
 if (!failed) echo '<p id="success">You&apos;re all set! Here are the links to your servers:</p>';
