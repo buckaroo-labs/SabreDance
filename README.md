@@ -19,6 +19,8 @@ Tested on PHP 8.1 and sabre/dav 3.2.0
 ## Instructions/Setup
 Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). Once all the code is configured, admin.php is available for adding users. To modify users, for now you'll need to perform the updates directly in the database using a database client of some sort (mysql command line or phpMyAdmin).
 
+To use the reminder management add-on, you'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) repo (or download and unzip a copy) inside the folder where this tool sits. 
+
 Feel free to reach out for assistance with this project, with sabre/dav in general, or even client setup (Thunderbird and iOS are working well for me).
 
 ## Future
