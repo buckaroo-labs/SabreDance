@@ -216,7 +216,7 @@ if (!$failed) {
 						  echo '<br><font color="red">ERROR: ' . mysqli_error($mysqli) . '</font>';
 				  	  }
 				  } else {
-					  echo '**Success**';
+					  echo '<BR>**Success**';
 				  }
 				} catch(Exception $e) {
 	  				echo '<br>Error: ' .$e->getMessage();
@@ -234,7 +234,7 @@ if (!$failed) {
 						  echo '<br><font color="red">ERROR: ' . mysqli_error($mysqli) . '</font>';
 				  	  }
 				  } else {
-					  echo '**Success**';
+					  echo '<BR>**Success**';
 				  }
 			} catch(Exception $e) {
 	  				echo '<br>Error: ' .$e->getMessage();
