@@ -5,6 +5,10 @@
 
 Implements the instructions found at https://sabre.io/dav/install/ and https://sabre.io/dav/gettingstarted/ and includes corrections to their example code. 
 
+## Reminder recurrence management (coming soon)
+
+A lack of standards for VTODO recurrence means that different clients will encode recurrence information differently, ignoring or even overwriting the recurrence information written by other clients. This tool will provide an HTTP interface for specifying recurrence and will make sure that the specification persists regardless of changes made by other clients.
+
 ## Requirements
 See sabre/dav documentation for requirements (PHP, Composer, etc).
 
