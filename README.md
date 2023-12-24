@@ -1,4 +1,4 @@
-# SabreDance
+# ![logo.png](logo.png)SabreDance
 
 ## Features
 ### Setup and friendly GUI for [sabre/dav](https://github.com/sabre-io/dav)
@@ -8,7 +8,7 @@ Implements the instructions found at https://sabre.io/dav/install/ and https://s
 ## Requirements
 See sabre/dav documentation for requirements (PHP, Composer, etc).
 
-This tool currently requires MySQL (SQLite option supported by sabre may be included here later). Future version may also assist with Composer installation. Feel free to reach out for assistance with this project, with sabre/dav in general, or even client setup (Thunderbird and iOS are working well for me).
+This tool currently requires MySQL (the SQLite option supported by sabre may be included here later). Future versions may also assist with Composer installation. Feel free to reach out for assistance with this project, with sabre/dav in general, or even client setup (Thunderbird and iOS are working well for me).
 
 Tested on PHP 8.1 and sabre/dav 3.2.0
 
