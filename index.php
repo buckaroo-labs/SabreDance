@@ -222,7 +222,23 @@ if (!$failed) {
 	  				echo '<br>Error: ' .$e->getMessage();
 				}
 			}
-
+			try {
+				$commands = file_get_contents('mysql.sql'); 
+				echo "<BR>Trying add-on SQL setup file";
+				  $result=$mysqli->multi_query($commands);
+				  if ($result===false) {
+					  $errString= mysqli_error($mysqli);
+					  if (strpos('already exists',$errString)===false) {
+						  echo '<br><font color="green">' . mysqli_error($mysqli) . '</font>';
+					  } else {
+						  echo '<br><font color="red">ERROR: ' . mysqli_error($mysqli) . '</font>';
+				  	  }
+				  } else {
+					  echo '**Success**';
+				  }
+			} catch(Exception $e) {
+	  				echo '<br>Error: ' .$e->getMessage();
+			}
 
 		}
 	} catch(Exception $e) {
