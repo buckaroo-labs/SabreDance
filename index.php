@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
     </head>
     <body>
-    <H1>SabreDance</H1>
+    <H1><img src="logo.png" style="max-height:30px;">SabreDance</H1>
     <P>This starter kit is designed to help you implement sabre/dav by giving you step-by-step instructions, executing setup steps, and providing template files. </P>
 <p>Your configuration will be examined each time you load this page, and you may be instructed to refresh this page after making some changes.<p>
 
