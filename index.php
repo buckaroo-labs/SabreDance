@@ -170,6 +170,7 @@ function dirChecks() {
 
 	if (!file_exists('vendor/autoload.php')) {
 		 $failed=true;
+		 $cwdstr=getcwd();
 		 $feedback.='<BR>The file <font="red">vendor/autoload.php</font> was not found in ' . $cwdstr. '. This is created when installing sabre/dav with Composer.';
 		 $instructions.='<BR>cd ' . $cwdstr . '<BR> composer require sabre/dav ~3.2.0';
 	}
