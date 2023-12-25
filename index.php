@@ -59,10 +59,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>SabreDance</title>
     <style>
 	html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+
+		table {
+	  		border-collapse: collapse;
+		}
+
+		tr:hover {background-color: #eeEEEE;}
+
+		td, th {
+	  		border: 1px solid #dddddd;
+	  		text-align: left;
+	  		padding: 8px;
+		}
+
     </style>
     </head>
     <body>
-    <H1><img src="logo.png" style="max-height:30px;">SabreDance</H1>
+<H1><img src="logo.png" style="max-height:30px;">SabreDance</H1>
     <P>This starter kit is designed to help you implement sabre/dav by giving you step-by-step instructions, executing setup steps, and providing template files. </P>
 <p>Your configuration will be examined each time you load this page, and you may be instructed to refresh this page after making some changes.<p>
 
@@ -152,7 +165,7 @@ function dirChecks() {
 	if (writeabledirectorycheck('data')) $status=$HTMLOK; else $status=$HTMLfail;
 	echo '<li>data directory check:' . $status . '</li>';
 	if (writeabledirectorycheck('public')) $status=$HTMLOK; else $status=$HTMLfail;
-	echo '<li>data directory check:' . $status . '</li>';
+	echo '<li>public directory check:' . $status . '</li>';
 
 	/*
 	 * Testing code
@@ -169,8 +182,8 @@ function dirChecks() {
 	 */
 
 	if (!file_exists('vendor/autoload.php')) {
-		 $failed=true;
 		 $cwdstr=getcwd();
+		 $failed=true;
 		 $feedback.='<BR>The file <font="red">vendor/autoload.php</font> was not found in ' . $cwdstr. '. This is created when installing sabre/dav with Composer.';
 		 $instructions.='<BR>cd ' . $cwdstr . '<BR> composer require sabre/dav ~3.2.0';
 	}
@@ -205,7 +218,7 @@ if (!$failed) {
 			$sqlFiles=glob("vendor/sabre/dav/examples/sql/mysql*.sql");
 			//print_r($sqlFiles);
 			foreach ($sqlFiles as $location) {
-				$commands = file_get_contents($location);   
+				$commands = file_get_contents($location);
 				try {
 				  echo "<BR>Trying setup file: " . str_replace('vendor/sabre/dav/examples/sql/','',$location);
 				  $result=$mysqli->multi_query($commands);
@@ -224,7 +237,7 @@ if (!$failed) {
 				}
 			}
 			try {
-				$commands = file_get_contents('mysql.sql'); 
+				$commands = file_get_contents('mysql.sql');
 				echo "<BR>Trying add-on SQL setup file";
 				  $result=$mysqli->multi_query($commands);
 				  if ($result===false) {
@@ -245,10 +258,43 @@ if (!$failed) {
 	} catch(Exception $e) {
 	  echo 'Error: ' .$e->getMessage();
 	  reportAndExit();
+
+
 	}
 
 }
-if (!failed) echo '<p id="success">You&apos;re all set! Here are the links to your servers:</p>';
+if (!$failed) {
+	echo '<p id="success">You&apos;re all set! Here are the direct links to your servers:</p>';
+	echo '<ul><li><a target="_blank" href="server.php">server.php</a></li><li><a target="_blank" href="calendarserver.php">calendarserver.php</a></li><li><a target="_blank" href="addressbookserver.php">addressbookserver.php</a></li></ul>';
+	echo '<p>Each of these links will require you to log in. The default username and password are &lsquo;admin& rsquo;. Change the password if you haven&apos;t already
+done so.</p>';
+	echo '<p>The pages at the links above are built according to the examples in the <a target="_blank" href="https://sabre.io/dav/gettingstarted/">sabre/dav
+documentation</a>.';
+
+	if (!isset($settings['shush'])) {
+		echo '<h2>Database contents</h2><p>The following information is moderately sensitive and shouldn&apos;t be left on an unsecured page like this one. After your setup is complete, you should either remove this page or edit settings.php to suppress the output below.</p>';
+		echo 'The following information and more is available at <a target="_blank" href="admin.php">this</a> page which requires a username and password.</p>';
+
+		echo '<h3>Registered users:</h3><table id="users" class="sortable"><tr><th>ID</th><th>Name</th></tr>';
+		$sql="select id, username from users";
+		$result = $mysqli->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
+		while ($row=$result->fetch_assoc()) {
+			$row_out='<tr><td>' . implode('</td><td>',$row)  . '</td></tr>';
+			echo $row_out . "\n";
+		}
+		echo "</table>";
+
+		 echo '<h3>Principals :</h3><table id="principals" class="sortable"><tr><th>id</th><th>uri</th><th>email</th><th>display name</th></tr>';
+                 $sql="select id, uri, email, displayname from principals";
+                $result = $mysqli->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
+                 while ($row=$result->fetch_assoc()) {
+                         $row_out='<tr><td>' . implode('</td><td>',$row) . '</td></tr>';
+                        echo $row_out . "\n";
+                }
+                echo "</table>";
+	}
+
+}
 ?>
    </body>
 </html>
