@@ -2,10 +2,6 @@
 $pagetitle="Administration";
 include "Hydrogen/pgTemplate.php";
 require('settings.php');
-$authFailureText='This page requires authentication.';
-$authFailureText2='Invalid username/password. This page requires authentication.';
-
-$realm = $settings['Realm'];
 
 $conn=mysqli_connect($settings['DBHost'],$settings['DBUser'],$settings['DBPass'],$settings['DBName']) ;
 
@@ -98,11 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
-
-        <?php include "Hydrogen/pgLogin.php"; ?>
-
-    </div>
-    <div class="w3-third w3-container">
 
 	<ul><li><a target="_blank" href="server.php">server.php</a></li>
 	<li><a target="_blank" href="calendarserver.php">calendarserver.php</a></li>
