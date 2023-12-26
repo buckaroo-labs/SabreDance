@@ -67,7 +67,7 @@ class CalDAV {
 			} else {
 				//force update
 				debug (__FILE__ . ": PushReminderUpdate: target URL: " . $result_row["calendar_id"] . "/" . $result_row["rem_uid"] ,basename(__FILE__) );
-				$newETAG = $this->DoPUTRequest($result_row["calendar_id"] , $result_row["rem_uid"] , $icalendar);
+				$newETAG = CalDAV::DoPUTRequest($result_row["calendar_id"] , $result_row["rem_uid"] , $icalendar);
 			}
 			debug (__FILE__ . ": PushReminderUpdate: Data PUT with return eTag of " . $newETAG,basename(__FILE__));
 			if (strpos($newETAG,'HTTP/1.0 4')===false) {
