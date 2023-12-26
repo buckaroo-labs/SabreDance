@@ -16,6 +16,7 @@ require_once 'vendor/autoload.php';
 
 // Backends
 $authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
+$authBackend2 = new Sabre\DAV\Auth\Backend\PDO($pdo);
 $calendarBackend = new Sabre\CalDAV\Backend\PDO($pdo);
 $principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo);
 $authBackend->setRealm($settings['Realm']);
@@ -35,6 +36,8 @@ if (isset($baseUri)) {
 /* Server Plugins */
 $authPlugin = new Sabre\DAV\Auth\Plugin($authBackend);
 $server->addPlugin($authPlugin);
+$authPlugin2 = new Sabre\DAV\Auth\Plugin($authBackend2);
+$server->addPlugin($authPlugin2);
 
 $aclPlugin = new Sabre\DAVACL\Plugin();
 $server->addPlugin($aclPlugin);
