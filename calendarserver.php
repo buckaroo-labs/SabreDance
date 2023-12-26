@@ -1,5 +1,6 @@
 <?php
 require 'settings.php';
+require 'Hydrogen/libAuthenticate.php';
 date_default_timezone_set($settings['Timezone']);
 
 // If you want to run the SabreDAV server in a custom location (using mod_rewrite for instance)
@@ -14,7 +15,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 require_once 'vendor/autoload.php';
 
 // Backends
-$authBackend = new Sabre\DAV\Auth\Backend\PDO($pdo);
+$authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
 $calendarBackend = new Sabre\CalDAV\Backend\PDO($pdo);
 $principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo);
 $authBackend->setRealm($settings['Realm']);
