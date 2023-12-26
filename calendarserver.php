@@ -15,8 +15,9 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 require_once 'vendor/autoload.php';
 
 // Backends
-$authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
-//$authBackend2 = new Sabre\DAV\Auth\Backend\PDO($pdo);
+//This one works fine in the browser, but not with WinSCP
+//$authBackend2 = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
+$authBackend = new Sabre\DAV\Auth\Backend\PDO($pdo);
 $calendarBackend = new Sabre\CalDAV\Backend\PDO($pdo);
 $principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo);
 $authBackend->setRealm($settings['Realm']);
