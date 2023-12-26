@@ -60,9 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
                 $sql3="INSERT INTO addressbooks (principaluri, displayname, uri, description, synctoken) VALUES ('principals/" . $username ."','default','default','Default address book','1')";
-                $conn->query($sql1) or die ('Unexpected error inserting into user table');
-                $conn->query($sql2) or die ('Unexpected error inserting into principals table');
-                $conn->query($sql3) or die ('Unexpected error inserting into addressbooks table');
+                $conn->query($sql1) or die ('Unexpected error inserting into user table: ' . $mysqli -> error);
+                $conn->query($sql2) or die ('Unexpected error inserting into principals table: ' . $mysqli -> error);
+                $conn->query($sql3) or die ('Unexpected error inserting into addressbooks table: ' . $mysqli -> error);
 
 	} else {
 		die ("<br>Unexpected or missing character input. Usernames and passwords should be alphanumeric with optional dot, dash or underscore characters. Spaces are allowed only for display name." . $hint);
