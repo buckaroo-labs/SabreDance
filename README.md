@@ -24,7 +24,7 @@ Tested on PHP 8.1, sabre/dav 3.2.0, Hydrogen 1.0.1
 Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). 
 
 You'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) repo (or download and unzip a copy) inside the folder where this tool sits (I should probably make this a submodule so that happens automatically):
-* wget [https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.1.tar.gz](https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.1.zip)
+* wget [https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.1.tar.gz](https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.1.tar.gz)
 * gunzip v1.0.1.tar.gz
 * tar -xvf v1.0.1.tar
 * ln -s Hydrogen-1.0.1 Hydrogen
