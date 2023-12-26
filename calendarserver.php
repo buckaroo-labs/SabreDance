@@ -16,8 +16,8 @@ require_once 'vendor/autoload.php';
 
 // Backends
 //This one works fine in the browser, but not with WinSCP?
-$authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
-//$authBackend = new Sabre\DAV\Auth\Backend\PDO($pdo);
+//$authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
+$authBackend = new Sabre\DAV\Auth\Backend\PDO($pdo);
 $calendarBackend = new Sabre\CalDAV\Backend\PDO($pdo);
 $principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo);
 $authBackend->setRealm($settings['Realm']);
