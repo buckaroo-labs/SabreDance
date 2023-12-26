@@ -54,12 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $username=$_POST['davuser'] ;
                 $dispname=$_POST['davname'] ;
                 $email=$_POST['davmail'] ;
-                $hash= md5($username . ':' . $settings['Realm'] . ':' . $_POST['davpass']);
-                $sql1="INSERT INTO users (username,digesta1) VALUES ('" . $username ."','" . $hash . "');";
+                $hash= password_hash($_POST['davpass'],PASSWORD_BCRYPT);
+                $sql1="INSERT INTO user (username,password,email,first_name,last_name) 
+		VALUES ('" . $username ."','" . $hash . "','" . $_POST['davmail'] ."','blank','blank');";
 
                 $sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
                 $sql3="INSERT INTO addressbooks (principaluri, displayname, uri, description, synctoken) VALUES ('principals/" . $username ."','default','default','Default address book','1')";
-                $conn->query($sql1) or die ('Unexpected error inserting into users table');
+                $conn->query($sql1) or die ('Unexpected error inserting into user table');
                 $conn->query($sql2) or die ('Unexpected error inserting into principals table');
                 $conn->query($sql3) or die ('Unexpected error inserting into addressbooks table');
 
