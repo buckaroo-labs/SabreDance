@@ -167,7 +167,7 @@ if (isset($_SESSION['username'])) {
 					 <select name="CALENDAR_ID" class="w3-input w3-border" >
 					 	<!--<option value="0">Default</option>-->
 					 	<?php
-						 		$sql = "SELECT c.id,c.uri,c.displayname FROM " . DB::$caldav_cal_table ;
+						 		 $sql = "SELECT c.id,c.uri,c.displayname FROM " . DB::$caldav_cal_table ;
 								 $sql .= " c ";
 								 $sql .= " where c.principaluri='principals/" . $_SESSION['username'] . "' ";
 								 $sql .= " ORDER BY c.uri";
