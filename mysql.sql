@@ -18,6 +18,10 @@ CREATE TABLE `user` (
 UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--admin/admin
+insert into user(username,email,first_name,last_name,password_hash) VALUES ('Admin','admin@example.com',
+  'Jane','Doe','$2y$10$Cs7BuGO4jBfbH9tfm7AOAeHIzJ3Y.nBKB0z27Do9z39nIPQMSmHO.');
+  
 CREATE TABLE reminders ( 
 `id` INT NOT NULL AUTO_INCREMENT , 
 `owner` VARCHAR(30) NOT NULL DEFAULT 'test' COMMENT 'user ID', 
