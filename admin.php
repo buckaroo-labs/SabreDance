@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $dispname=$_POST['davname'] ;
                 $email=$_POST['davmail'] ;
                 $hash= password_hash($_POST['davpass'],PASSWORD_BCRYPT);
-                $sql1="INSERT INTO user (username,password,email,first_name,last_name) 
+                $sql1="INSERT INTO user (username,password_hash,email,first_name,last_name) 
 		VALUES ('" . $username ."','" . $hash . "','" . $_POST['davmail'] ."','blank','blank');";
 
                 $sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
