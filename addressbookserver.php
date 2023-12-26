@@ -1,5 +1,6 @@
 <?php
 require 'settings.php';
+require 'Hydrogen/libAuthenticate.php';
 date_default_timezone_set($settings['Timezone']);
 
 // Make sure this setting is turned on and reflect the root url for your WebDAV server.
@@ -14,7 +15,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 require_once 'vendor/autoload.php';
 
 // Backends
-$authBackend = new Sabre\DAV\Auth\Backend\PDO($pdo);
+$authBackend = new Sabre\DAV\Auth\Backend\BasicCallBack('authenticate');
 $principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo);
 $carddavBackend = new Sabre\CardDAV\Backend\PDO($pdo);
 $authBackend->setRealm($settings['Realm']);
