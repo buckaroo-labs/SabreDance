@@ -33,7 +33,7 @@ class CalDAV {
 		debug (__FILE__ . ": DeleteReminder: SQL=" . $csql,basename(__FILE__));
 
 		if ($rrow = $dds->getNextRow("labelled")) {
-			$resultCode= $calDAVClient->DoDELETERequest($result_row["cal_uid"] . "/" . $rrow[1] . ".ics", '"' .$rrow[0] . '"');
+			//$resultCode= $calDAVClient->DoDELETERequest($result_row["cal_uid"] . "/" . $rrow[1] . ".ics", '"' .$rrow[0] . '"');
 			debug (__FILE__ . ": DeleteReminder: Data DELETED with return code of " . $resultCode,basename(__FILE__));
 		}
 	}
@@ -129,7 +129,7 @@ class CalDAV {
 				debug("PullCalendarUpdates: Reading calendar " . $calendars[$y]['uri'],basename(__FILE__));
 				//we are reusing code here that was designed to talk to a CalDAV server
 				//  rather than to its database directly
-				$calDAVClient = new CalDAVClient( "dummy", "dummy", "dummy", "dummy" );
+				//$calDAVClient = new CalDAVClient( "dummy", "dummy", "dummy", "dummy" );
 
 				//pull all the reminders for this calendar (array of id,etag,uri,calendardata)
 				$etags=CalDAV::GetReminders($calendars[$y]['calendarid']);
