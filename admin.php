@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 echo '<h2>Database contents</h2>';
 
 		echo '<h3>Registered users:</h3><table id="users" class="sortable"><tr><th>ID</th><th>Name</th></tr>';
-		$sql="select id, username from users";
+		$sql="select id, username from user";
 		$result = $conn->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
 		while ($row=$result->fetch_assoc()) {
 			$row_out='<tr><td>' . implode('</td><td>',$row) . '</td></tr>';
