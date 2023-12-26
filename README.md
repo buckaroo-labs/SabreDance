@@ -29,6 +29,8 @@ To use the reminder management add-on, you'll also need to clone the [Hydrogen](
 * tar -xvf v1.0.tar
 * ln -s Hydrogen-1.0 Hydrogen
 
+To enforce or synchronize changes in the recurrence schedule between heterogenous clients, schedule a job that will run "php batch_processing.php"
+
 Feel free to reach out for assistance with this project, with sabre/dav in general, or even client setup (Thunderbird and iOS are working well for me).
 
 ## Future
