@@ -111,7 +111,7 @@ function common_post_proc() {
 	global $sqlb;
 	global $dds;
 	global $startDate;
-	$sqlb->addColumn("owner",$_SESSION['username']);
+	$sqlb->addColumn("owner",'principals/' . $_SESSION['username']);
 	
 	//process POST variables into sanitized SQL stmt
 	
@@ -164,7 +164,7 @@ if ($_POST['ID']=="new") {
 		if($_POST['CALENDAR_ID']!=0)	$sqlb->addColumn("calendar_id",$_POST['CALENDAR_ID']);
 	}
 	common_post_proc();
-	$newID=$dds->getInt("select max(id) from " . DB::$reminder_table . " where owner='" .  $_SESSION['username'] . "'");
+	$newID=$dds->getInt("select max(id) from " . DB::$reminder_table . " where owner='principals/" .  $_SESSION['username'] . "'");
 	if(isset($_POST['CALENDAR_ID'])) {
 		if($_POST['CALENDAR_ID']!=0)	CalDAV::PushReminderUpdate($newID,true);
 	}
@@ -175,7 +175,7 @@ if ($_POST['ID']=="new") {
 		$sqlb = new SQLBuilder("UPDATE");
 		$sqlb->setTableName(DB::$reminder_table);
 		$sqlb->addWhere("id='" .  (int) $_POST['ID']. "'");
-		$sqlb->addWhere("owner='" .  $_SESSION['username']. "'");
+		$sqlb->addWhere("owner='principals/" .  $_SESSION['username']. "'");
 		$sqlb->addColumn("last_modified",DateTimeExt::zdate());
 		if(isset($_POST['CALENDAR_ID'])) {
 			$tempID=$_POST['CALENDAR_ID'];
