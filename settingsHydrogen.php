@@ -34,7 +34,7 @@ $sidebar_links[1]=array("name"=>"New Reminder","href"=>"edit_reminder.php?ID=new
 //$sidebar_links[3]=array("name"=>"Lists","href"=>"calendars.php","class"=>$settings['color4']);
 //$sidebar_links[3]=array("name"=>"CalDAV Setup","href"=>"caldav_accounts.php","class"=>$settings['color4']);
 
-$settings['footer_text1']="<p><a target="_blank" href="https://sabre.io/dav/">SabreDAV</a>maintained by fruux</p>";
+$settings['footer_text1']='<p><a target="_blank" href="https://sabre.io/dav/">SabreDAV</a>maintained by fruux</p>';
 $settings['footer_text2']='<p><a target="_blank" href="https://github.com/buckaroo-labs/SabreDance">SabreDance</a> additions by <a target="_blank" href="https://github.com/buckaroo-labs">buckaroo-labs</a><p>';
 
 $settings['prompt_reg']='0';
