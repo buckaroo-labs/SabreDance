@@ -47,7 +47,7 @@ function show_upcoming () {
 		
 		*/
 		$sql = "select id as '(edit)', summary as 'Title', date_format(start_date,'%M %D') as 'Start', date_format(due_date,'%M %D') as 'Due'";
-		$sql = $sql . ",calendar_id	as 'Calendar' , id as '(delete)' from " . DB::$reminder_table . " where owner='" . $_SESSION['username'] . "' ";
+		$sql = $sql . ",calendar_id	as 'Calendar' , id as '(delete)' from " . DB::$reminder_table . " where owner='principals/" . $_SESSION['username'] . "' ";
 		$sql = $sql . " and ifnull(start_date,now()- interval 1 day) BETWEEN current_timestamp() and date_add(current_timestamp(), interval 90 day)  ";
 		//$sql = $sql . " and ifnull(snooze_date,now()- interval 1 day) > current_timestamp()";
 		
@@ -120,7 +120,7 @@ if (isset($_SESSION['username'])) {
 	
 	$sql = "SELECT sequence as '(check)', id as '(edit)', summary as 'Title', date_format(start_date,'%M %D') as 'Start', date_format(due_date,'%M %D') as 'Due'";
 	$sql .= ", CASE WHEN due_date < NOW() THEN 1 ELSE 0 END as overdue ";
-	$sql = $sql . ",calendar_id as 'Calendar', id as '(delete)'	from " . DB::$reminder_table . " where owner='" . $_SESSION['username'] . "' ";
+	$sql = $sql . ",calendar_id as 'Calendar', id as '(delete)'	from " . DB::$reminder_table . " where owner='principals/" . $_SESSION['username'] . "' ";
 	$sql = $sql . " and ifnull(start_date,now()- interval 1 day) < current_timestamp() ";
 	$sql = $sql . " and ifnull(snooze_date,now()- interval 1 day) < current_timestamp() ";
 	
