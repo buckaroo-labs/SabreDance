@@ -4,7 +4,6 @@ include "Hydrogen/pgTemplate.php";
 require_once 'common.php';
 require_once 'clsDB.php';
 $_SESSION['referring_page']=$_SERVER['REQUEST_URI'];
-check_login();
 
 $pagetitle="Reminders";
 $headline = '<h1>Reminders</h1>' ;
