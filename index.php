@@ -188,6 +188,13 @@ function dirChecks() {
 		 $instructions.='<BR>cd ' . $cwdstr . '<BR> composer require sabre/dav ~3.2.0';
 	}
 
+	if (!file_exists('Hydrogen')) {
+	 $cwdstr=getcwd();
+	 $failed=true;
+	 $feedback.='<BR>The <font="red">Hydrogen</font> directory was not found in ' . $cwdstr
+		 . '. See README.md for instructions.';
+	  
+	}
 	echo '</ul>';
 	if ($failed) return false; else return true;
 
@@ -276,7 +283,7 @@ documentation</a>.';
 		echo 'The following information and more is available at <a target="_blank" href="admin.php">this</a> page which requires a username and password.</p>';
 
 		echo '<h3>Registered users:</h3><table id="users" class="sortable"><tr><th>ID</th><th>Name</th></tr>';
-		$sql="select id, username from users";
+		$sql="select id, username from user";
 		$result = $mysqli->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
 		while ($row=$result->fetch_assoc()) {
 			$row_out='<tr><td>' . implode('</td><td>',$row)  . '</td></tr>';
