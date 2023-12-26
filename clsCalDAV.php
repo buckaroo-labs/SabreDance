@@ -19,21 +19,22 @@ class CalDAV {
 		}
 	}
 
-	public static function _DeleteReminderFromCalendar($reminder_id,$etag){
+	public static function DeleteReminderFromCalendar($reminder_id,$etag){
 		//This is used when a reminder is moved from one calendar to another.
-		//  Renaming it with leading underscore and seeing whether it's really needed.
 		global $dds;
 		require_once ("clsReminder.php");
 
 		$rsql="SELECT r.etag as etag, r.uid as rem_uid, r.owner as owner ";
 		$rsql.=" FROM " . DB::$reminder_table . " r ";
-		$rsql.=" WHERE r.id =" . $reminder_id	;
+		$rsql.=" WHERE r.id =" . $reminder_id . " and etag='" . $etag . "'"	;
 
 		$result=$dds->setSQL($rsql);
 		debug (__FILE__ . ": DeleteReminder: SQL=" . $csql,basename(__FILE__));
 
 		if ($rrow = $dds->getNextRow("labelled")) {
-			//$resultCode= $calDAVClient->DoDELETERequest($result_row["cal_uid"] . "/" . $rrow[1] . ".ics", '"' .$rrow[0] . '"');
+			$sql = "DELETE FROM " . DB::$reminder_table . " r ";
+			$sql.=" WHERE r.id =" . $reminder_id ;
+			$result=$dds->setSQL($sql);
 			debug (__FILE__ . ": DeleteReminder: Data DELETED with return code of " . $resultCode,basename(__FILE__));
 		}
 	}
