@@ -1,11 +1,13 @@
 
 <?php 
-$pagetitle="Reminder | Cadence";
-$headline = '<h1>Cadence</h1>' ;
+$pagetitle="Reminder";
+$headline = '<h1>Reminders</h1>' ;
 include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'common.php';
 require_once 'clsDB.php';
+require_once 'common.php';
+require_login();
 $this_page="view_reminder.php"
 ?>
 
@@ -36,7 +38,7 @@ if (isset($_SESSION['username'])) {
 		$where="id=" . $reminderID;
 	}
 
-	$result = $dds->setSQL("SELECT * FROM " . DB::$reminder_table . " WHERE  ". $where . " AND owner ='" . $_SESSION['username'] . "'");
+	$result = $dds->setSQL("SELECT * FROM " . DB::$reminder_table . " WHERE  ". $where . " AND owner ='principals/" . $_SESSION['username'] . "'");
 	$remdata = $dds->getNextRow("labeled");
 
 	$startdatestr = date("Y-m-d",strtotime($remdata['start_date']));
@@ -56,8 +58,8 @@ if (isset($_SESSION['username'])) {
 		$calendar_name='Default';
 		if (!is_null($remdata['calendar_id'])) {
 			//look up the name
-			$sql = "SELECT c.name,a.alias FROM " . DB::$caldav_cal_table ;
-			$sql .= " c inner join " . DB::$caldav_acct_table . " a on a.id=c.remote_acct_id ";
+			$sql = "SELECT c.uri,c.displayname FROM " . DB::$caldav_cal_table ;
+			$sql .= " c  ";
 			$sql .= " where c.id='" . $remdata['calendar_id'] . "' ";
 			$result=$dds->setSQL($sql);
 			$result_row=$dds->getNextRow();
