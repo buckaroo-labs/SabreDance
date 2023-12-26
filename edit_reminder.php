@@ -11,7 +11,6 @@ require_once 'Hydrogen/libDebug.php';
 require_once 'clsDB.php';
 require_once 'common.php';
 ini_set(opcache.enable,0);
-check_login();
 ?>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
