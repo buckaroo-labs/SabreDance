@@ -17,18 +17,20 @@ See sabre/dav documentation for requirements (PHP, Composer, etc).
 
 This tool currently requires MySQL (the SQLite option supported by sabre may be included here later). Future versions may also assist with Composer installation. 
 
-Tested on PHP 8.1, sabre/dav 3.2.0, [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) 1.0 (optional, see below)
+Tested on PHP 8.1, sabre/dav 3.2.0, [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) 1.0  
 
 ## Instructions/Setup
-Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). Once all the code is configured, admin.php is available for adding users. To modify users, for now you'll need to perform the updates directly in the database using a database client of some sort (mysql command line or phpMyAdmin).
+Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). 
 
-Use the link on index.php to calendarserver.php to create new calendars under your username (e.g. https://yourdomain.com/dav/calendarserver.php > calendars > yourusername > Create new calendar).
-
-To use the reminder management add-on, you'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) repo (or download and unzip a copy) inside the folder where this tool sits:
+You'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) repo (or download and unzip a copy) inside the folder where this tool sits (I should probably make this a submodule so that happens automatically):
 * wget https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.tar.gz
 * gunzip v1.0.tar.gz
 * tar -xvf v1.0.tar
 * ln -s Hydrogen-1.0 Hydrogen
+
+Once all the code is configured, admin.php is available for adding users. To modify users, for now you'll need to perform the updates directly in the database using a database client of some sort (mysql command line or phpMyAdmin).
+
+Use the link on index.php to calendarserver.php to create new calendars under your username (e.g. https://yourdomain.com/dav/calendarserver.php > calendars > yourusername > Create new calendar).
 
 To enforce or synchronize changes in the reminders recurrence schedule between heterogenous clients, schedule a job that will run "php batch_processing.php"
 
