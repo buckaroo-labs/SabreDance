@@ -4,10 +4,10 @@ include "Hydrogen/pgTemplate.php";
 require_once 'common.php';
 require_once 'clsDB.php';
 $_SESSION['referring_page']=$_SERVER['REQUEST_URI'];
-require_login();
+check_login();
 
-$pagetitle="Reminders | Cadence";
-$headline = '<h1>Cadence</h1>' ;
+$pagetitle="Reminders";
+$headline = '<h1>Reminders</h1>' ;
 require_once 'Hydrogen/libDebug.php';
 require_once 'clsReminder.php';
 
