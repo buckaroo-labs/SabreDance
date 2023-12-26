@@ -17,7 +17,9 @@ See sabre/dav documentation for requirements (PHP, Composer, etc).
 
 This tool currently requires MySQL (the SQLite option supported by sabre may be included here later). Future versions may also assist with Composer installation. 
 
-Tested on PHP 8.1, sabre/dav 3.2.0, [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) 1.0  
+The [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) library (see easy instructions below).
+
+Tested on PHP 8.1, sabre/dav 3.2.0, Hydrogen 1.0  
 
 ## Instructions/Setup
 Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). 
