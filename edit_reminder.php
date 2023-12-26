@@ -1,11 +1,17 @@
 
 <?php 
-$pagetitle="Reminders | Cadence";
-$headline = '<h1>Cadence</h1>' ;
+header("Cache-Control: no-cache");
+//header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+$pagetitle="Reminders";
+$headline = '<h1>Reminders</h1>' ;
 include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'clsDB.php';
-
+require_once 'common.php';
+ini_set(opcache.enable,0);
+check_login();
 ?>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
@@ -74,7 +80,7 @@ if (isset($_SESSION['username'])) {
 			$calendar_id=0;
 		} else {
 			echo ('<h2>Edit reminder</h2>');
-			$result = $dds->setSQL("SELECT * FROM " . DB::$reminder_table . " WHERE id=" . $rem_id . " AND owner ='" . $_SESSION['username'] . "'");
+			$result = $dds->setSQL("SELECT * FROM " . DB::$reminder_table . " WHERE id=" . $rem_id . " AND owner ='principals/" . $_SESSION['username'] . "'");
 			$remdata = $dds->getNextRow("labeled");
 			$startdatestr = date("Y-m-d",strtotime($remdata['start_date']));
 			$starttimestr = date("H:i",strtotime($remdata['start_date']));
@@ -161,10 +167,10 @@ if (isset($_SESSION['username'])) {
 					 <select name="CALENDAR_ID" class="w3-input w3-border" >
 					 	<option value="0">Default</option>
 					 	<?php
-						 		$sql = "SELECT c.id,c.name,a.alias FROM " . DB::$caldav_cal_table ;
-								 $sql .= " c inner join " . DB::$caldav_acct_table . " a on a.id=c.remote_acct_id ";
-								 $sql .= " where c.owner='" . $_SESSION['username'] . "' ";
-								 $sql .= " ORDER BY c.name";
+						 		$sql = "SELECT c.id,c.uri,c.displayname FROM " . DB::$caldav_cal_table ;
+								 $sql .= " c ";
+								 $sql .= " where c.principaluri='principals/" . $_SESSION['username'] . "' ";
+								 $sql .= " ORDER BY c.uri";
 								 $result = $dds->setSQL($sql);
 								 while ($result_row = $dds->getNextRow()){
 									 $selectLabel=$result_row[1] .' ('. $result_row[2] . ')';
@@ -229,7 +235,8 @@ if (isset($_SESSION['username'])) {
 				<div id="Recurrence" class="w3-container w3-card-4 w3-pale-green">
 					<h4>Recurrence</h4>
 					<p> 
-						<input name="Recurrence" value="RecurYN" type="checkbox" <?php if(!$new AND $recur_units!="") echo ' checked';  ?> > This item will recur every<br>
+						<input name="Recurrence" value="RecurYN" type="checkbox" <?php if(!$new && $recur_units!="") echo ' checked';  ?> > This item will recur every<br>
+						<?php debug("Recur_units: ". $recur_units); ?>
 						<input name="recur_units" class=" w3-border" type="number"  <?php if($recur_units!="") echo ('value="'. $recur_units . '"'); else echo('value="1"');  ?> required>
 						<select name="recur_scale" class=" w3-border" value="<?php echo $recur_scale; ?>" required>
 							<option value="0" <?php if ($recur_scale==0)echo ' selected'; ?> >hours</option>
