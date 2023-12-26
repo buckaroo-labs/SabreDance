@@ -1,3 +1,23 @@
+
+CREATE TABLE `user` (
+`id` INT NOT NULL AUTO_INCREMENT , 
+  `username` varchar(50) NOT NULL,
+  `email` varchar(99) NOT NULL,
+  `password_hash` varchar(500)  NOT NULL COMMENT 'php password_hash(password,PASSWORD_BCRYPT)' ,
+  `first_name` VARCHAR(30) NOT NULL ,
+`last_name` VARCHAR(30) NOT NULL ,
+  `reset_code` varchar(25) DEFAULT NULL,
+  `session_id` varchar(50) DEFAULT NULL,
+  `access_token` varchar(500) DEFAULT NULL,
+  `last_ip` varchar(30) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `ins_user` varchar(30) NOT NULL DEFAULT 'system',
+  `ins_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , PRIMARY KEY (`id`),
+ UNIQUE KEY `username` (`username`),
+UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE reminders ( 
 `id` INT NOT NULL AUTO_INCREMENT , 
 `owner` VARCHAR(30) NOT NULL DEFAULT 'test' COMMENT 'user ID', 
