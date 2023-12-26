@@ -18,16 +18,16 @@ See sabre/dav documentation for their requirements (PHP, Composer, etc). Require
 *The [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) library (see easy instructions below).
 *Due to the Hydrogen library's dependency on MySQL, this tool requires MySQL as a database (SQLite and other options are supported by sabre). 
 
-Tested on PHP 8.1, sabre/dav 3.2.0, Hydrogen 1.0.2  
+Tested on PHP 8.1, sabre/dav 3.2.0, Hydrogen 1.0.3  
 
 ## Instructions/Setup
 Clone this repo or download the zip, then copy/move the files in it to the same path on your web server (your Base URI) where you intend to put sabre/dav. Browse to that path (or specifically to index.php) and you'll be guided from there. It will go easier if you choose '/dav/' as your Base URI (this is the default in settings.php). 
 
 You'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) repo (or download and unzip a copy) inside the folder where this tool sits (I should probably make this a submodule so that happens automatically):
-* wget [https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.2.tar.gz](https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.2.tar.gz)
-* gunzip v1.0.1.tar.gz
-* tar -xvf v1.0.1.tar
-* ln -s Hydrogen-1.0.1 Hydrogen
+* wget [https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.3.tar.gz](https://github.com/buckaroo-labs/Hydrogen/archive/refs/tags/v1.0.3.tar.gz)
+* gunzip v1.0.3.tar.gz
+* tar -xvf v1.0.3.tar
+* ln -s Hydrogen-1.0.3 Hydrogen
 
 Once all the code is configured, admin.php is available for adding users. To modify users, for now you'll need to perform the updates directly in the database using a database client of some sort (mysql command line or phpMyAdmin).
 
