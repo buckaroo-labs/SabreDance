@@ -42,7 +42,7 @@ function isPOSTedClean($postVar){
 
 }
 $badPost=false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 	$hint='';
 	//check for required inputs incl whether sanitized
 	if (!isPOSTedClean('davname'))  $badPost=true;
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<li><a target="_blank" href="addressbookserver.php">addressbookserver.php</a></li>
 	<li><a target="_blank" href="reminders.php">reminders.php</a></li>
 	</ul>
-<?php 
+<?php if (isset($_SESSION['username'])) {
 echo '<h2>Database contents</h2>';
 
 		echo '<h3>Registered users:</h3><table id="users" class="sortable"><tr><th>ID</th><th>username</th><th>email</th><th>first name</th><th>last name</th></tr>';
@@ -121,9 +121,15 @@ echo '<h2>Database contents</h2>';
                         echo $row_out . "\n";
                 }
                 echo "</table>";
+	if ($_SESSION['username']=='admin') {
 		echo '<h3>Add a user</h3><p>No spaces allowed except in display name. Values should be alphanumeric with optional dot, dash, or underscore characters.</p>';
 		include 'userForm.php';
-
+	} else {
+		echo '<p>Log in as &rdquo;admin&rdquo; to create a user from this page.</p>';
+	}
+} else {
+	echo "Not logged in.";
+}
 ?>
    
     </div>
