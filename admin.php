@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	<ul><li><a target="_blank" href="server.php">server.php</a></li>
 	<li><a target="_blank" href="calendarserver.php">calendarserver.php</a></li>
-	<li><a target="_blank" href="addressbookserver.php">addressbookserver.php</a></li>';
+	<li><a target="_blank" href="addressbookserver.php">addressbookserver.php</a></li>
 	<li><a target="_blank" href="reminders.php">reminders.php</a></li>
 	</ul>
 <?php 
