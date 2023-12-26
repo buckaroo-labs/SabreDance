@@ -266,7 +266,7 @@ if (!$failed) {
 if (!$failed) {
 	echo '<p id="success">You&apos;re all set! Here are the direct links to your servers:</p>';
 	echo '<ul><li><a target="_blank" href="server.php">server.php</a></li><li><a target="_blank" href="calendarserver.php">calendarserver.php</a></li><li><a target="_blank" href="addressbookserver.php">addressbookserver.php</a></li></ul>';
-	echo '<p>Each of these links will require you to log in. The default username and password are &lsquo;admin& rsquo;. Change the password if you haven&apos;t already
+	echo '<p>Each of these links will require you to log in. The default username and password are &lsquo;admin&rsquo;. Change the password if you haven&apos;t already
 done so.</p>';
 	echo '<p>The pages at the links above are built according to the examples in the <a target="_blank" href="https://sabre.io/dav/gettingstarted/">sabre/dav
 documentation</a>.';
