@@ -165,7 +165,7 @@ if (isset($_SESSION['username'])) {
 				<p>
 					 <label>Calendar</label>
 					 <select name="CALENDAR_ID" class="w3-input w3-border" >
-					 	<option value="0">Default</option>
+					 	<!--<option value="0">Default</option>-->
 					 	<?php
 						 		$sql = "SELECT c.id,c.uri,c.displayname FROM " . DB::$caldav_cal_table ;
 								 $sql .= " c ";
