@@ -1,9 +1,8 @@
 <?php
-
 class DB {
-		public static $reminder_table="cadence_reminder";
-		public static $caldav_acct_table="cadence_remote_account";
-		public static $caldav_cal_table="cadence_calendar";
+		public static $reminder_table="reminders";
+		public static $caldav_acct_table="principals";
+		public static $caldav_cal_table="calendarinstances";
 
 		public static function calDAV_mapped_columns() {
 			$columns=array();
@@ -18,7 +17,7 @@ class DB {
 			$columns[8]['col_name']="prodid";
 			$columns[9]['col_name']="category";
 
-			
+
 			$columns[0]['calDAV_name']="UID";
 			$columns[1]['calDAV_name']="SUMMARY";
 			$columns[2]['calDAV_name']="LOCATION";
@@ -31,10 +30,7 @@ class DB {
 			$columns[9]['calDAV_name']="CATEGORIES";
 
 			return $columns;
-			
-			
+
 		}
-
-}	
-
+}
 ?>
