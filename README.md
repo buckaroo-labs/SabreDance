@@ -15,9 +15,9 @@ A lack of standards for VTODO recurrence means that different clients will encod
 ## Requirements
 See sabre/dav documentation for requirements (PHP, Composer, etc).
 
-This tool currently requires MySQL (the SQLite option supported by sabre may be included here later). Future versions may also assist with Composer installation. 
-
 The [Hydrogen](https://github.com/buckaroo-labs/Hydrogen) library (see easy instructions below).
+
+Due to the Hydrogen library'y dependency on MySQL, this tool requires MySQL as a database (SQLite and other options are supported by sabre). 
 
 Tested on PHP 8.1, sabre/dav 3.2.0, Hydrogen 1.0  
 
