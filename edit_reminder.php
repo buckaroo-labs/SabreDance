@@ -1,16 +1,16 @@
 
 <?php 
-header("Cache-Control: no-cache");
+//header("Cache-Control: no-cache");
 //header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+//header("Cache-Control: post-check=0, pre-check=0", false);
+//header("Pragma: no-cache");
 $pagetitle="Reminders";
-$headline = '<h1>Reminders</h1>' ;
+$headline = '<h1>Edit Reminder</h1>' ;
 include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'clsDB.php';
 require_once 'common.php';
-ini_set(opcache.enable,0);
+//ini_set(opcache.enable,0);
 ?>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
