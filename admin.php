@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
                 $email=$_POST['davmail'] ;
 		$lname='blank';
 		$fname='blank';
-		if (isset($_POST['davfname']) $fname=$_POST['davfname'] ;
-		if (isset($_POST['davlname']) $fname=$_POST['davlname'] ;
+		if (isset($_POST['davfname'])) $fname=$_POST['davfname'] ;
+		if (isset($_POST['davlname'])) $fname=$_POST['davlname'] ;
                 $hash= password_hash($_POST['davpass'],PASSWORD_BCRYPT);
                 $sql1="INSERT INTO user (username,password_hash,email,first_name,last_name) 
 		VALUES ('" . $username ."','" . $hash . "','" . $_POST['davmail'] ."','" . $fname . "','" . $lname . "');";
