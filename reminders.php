@@ -1,7 +1,7 @@
 
 <?php 
 include "Hydrogen/pgTemplate.php";
-require_once 'common.php';
+//require_once 'common.php';
 require_once 'clsDB.php';
 $_SESSION['referring_page']=$_SERVER['REQUEST_URI'];
 
