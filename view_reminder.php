@@ -6,7 +6,6 @@ include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'common.php';
 require_once 'clsDB.php';
-require_once 'common.php';
 $this_page="view_reminder.php"
 ?>
 
