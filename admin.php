@@ -83,9 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 
 
     <style>
-	html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
-
-
+	
 	table.admin {
   		border-collapse: collapse;
 	}
