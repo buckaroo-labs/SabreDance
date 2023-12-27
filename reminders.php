@@ -1,15 +1,12 @@
 
 <?php 
 include "Hydrogen/pgTemplate.php";
-//require_once 'common.php';
 require_once 'clsDB.php';
 $_SESSION['referring_page']=$_SERVER['REQUEST_URI'];
-require('settings.php');
 $pagetitle="Reminders";
 $headline = '<h1>Reminders</h1>' ;
-require_once 'Hydrogen/libDebug.php';
+//require_once 'Hydrogen/libDebug.php';
 require_once 'clsReminder.php';
-if (session_status() == PHP_SESSION_NONE) session_start();
 
 ?>
 
