@@ -9,7 +9,7 @@ $pagetitle="Reminders";
 $headline = '<h1>Reminders</h1>' ;
 require_once 'Hydrogen/libDebug.php';
 require_once 'clsReminder.php';
-
+if (session_status() == PHP_SESSION_NONE) session_start();
 
 ?>
 
