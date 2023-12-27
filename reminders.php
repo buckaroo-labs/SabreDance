@@ -30,7 +30,7 @@ $(document).ready(function(){
 <div class="w3-main w3-container w3-padding-16" style="margin-left:250px">
 
 <?php 
-include 'Hydrogen/elemLogoHeadline.php';  
+//include 'Hydrogen/elemLogoHeadline.php';  
 
 function show_upcoming () {
 		global $dds;
