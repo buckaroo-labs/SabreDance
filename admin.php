@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 	if (!isPOSTedClean('davpass'))  $badPost=true;
 	if (!isPOSTedClean('davmail'))  $badPost=true;
 	//we're going to let these be 'blank' but make sure they're clean
-	if (isset($_POST['davfname']) && isPOSTedClean('davfname'))  $badPost=true;
-	if (isset($_POST['davlname']) && isPOSTedClean('davlname'))  $badPost=true;
+	if (isset($_POST['davfname']) && !isPOSTedClean('davfname'))  $badPost=true;
+	if (isset($_POST['davlname']) && !isPOSTedClean('davlname'))  $badPost=true;
 	//
 	if (!$badPost) {
                 $username=$_POST['davuser'] ;
@@ -72,7 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
                 $conn->query($sql3) or die ('Unexpected error inserting into addressbooks table: ' . $sql3 . '<BR>' . $mysqli -> error);
 
 	} else {
-		die ("<br>Unexpected or missing character input. Usernames and passwords should be alphanumeric with optional dot, dash or underscore characters. Spaces are allowed only for display name." . $hint);
+		die ("<br>Unexpected or missing character input. 
+  Usernames and passwords should be alphanumeric with optional dot, dash or underscore characters. 
+  Spaces are allowed only for display name." . $hint);
 	}
 }
 ?>
