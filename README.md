@@ -1,4 +1,4 @@
-# ![logo.png](logo.png)SabreDance
+# ![SabreDance](title.png)
 
 ## Features
 ### Setup and friendly GUI for [sabre/dav](https://github.com/sabre-io/dav)
