@@ -1,13 +1,12 @@
 
 <?php 
 $pagetitle="Reminder";
-$headline = '<h1>Reminders</h1>' ;
+$headline = '<h1>View Reminder</h1>' ;
 include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'common.php';
 require_once 'clsDB.php';
 require_once 'common.php';
-require_login();
 $this_page="view_reminder.php"
 ?>
 
