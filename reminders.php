@@ -175,6 +175,7 @@ if (isset($_SESSION['username'])) {
 	}
 } else {
 	echo '<P>Not logged in.</p>';	
+	include "Hydrogen/pgLogin.php";
 	
 }	
 ?>
