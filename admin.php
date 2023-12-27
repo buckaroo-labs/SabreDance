@@ -49,14 +49,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 	if (!isPOSTedClean('davuser'))  $badPost=true;
 	if (!isPOSTedClean('davpass'))  $badPost=true;
 	if (!isPOSTedClean('davmail'))  $badPost=true;
+	//we're going to let these be 'blank' but make sure they're clean
+	if (isset($_POST['davfname']) && isPOSTedClean('davfname'))  $badPost=true;
+	if (isset($_POST['davlname']) && isPOSTedClean('davlname'))  $badPost=true;
 	//
 	if (!$badPost) {
                 $username=$_POST['davuser'] ;
                 $dispname=$_POST['davname'] ;
                 $email=$_POST['davmail'] ;
+		$lname='blank';
+		$fname='blank';
+		if (isset($_POST['davfname']) $fname=$_POST['davfname'] ;
+		if (isset($_POST['davlname']) $fname=$_POST['davlname'] ;
                 $hash= password_hash($_POST['davpass'],PASSWORD_BCRYPT);
                 $sql1="INSERT INTO user (username,password_hash,email,first_name,last_name) 
-		VALUES ('" . $username ."','" . $hash . "','" . $_POST['davmail'] ."','blank','blank');";
+		VALUES ('" . $username ."','" . $hash . "','" . $_POST['davmail'] ."','" . $fname . "','" . $lname . "');";
 
                 $sql2="INSERT INTO principals (uri,email,displayname) VALUES ('principals/" . $username . "', '" . $email . "','" . $dispname . "')";
                 $sql3="INSERT INTO addressbooks (principaluri, displayname, uri, description, synctoken) VALUES ('principals/" . $username ."','default','default','Default address book','1')";
