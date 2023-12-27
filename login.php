@@ -1,4 +1,5 @@
 <?php
+require("forceHTTPS.php");
 $pagetitle="Log In";
 include "Hydrogen/pgTemplate.php";
 ?>
