@@ -7,10 +7,9 @@ Implements the instructions found at https://sabre.io/dav/install/ and https://s
 
 ### Reminder recurrence management 
 
-A lack of standards for VTODO recurrence means that different clients will encode recurrence information differently, ignoring or even overwriting the recurrence information written by other clients. This tool will provide an HTTP interface for specifying recurrence and will make sure that the specification persists regardless of changes made by other clients.
+There's a reason that SabreDAV has yet to bundle any CalDAV/CardDAV client software with their server, and that's because it's compatible with many existing clients. So why do we bother here? The short answer is that a lack of standards among those clients sometimes leads to changes being lost, so our answer is to keep a duplicate copy of some of your data and give you an interface for managing that.
 
-* The "default" calendar in the Reminders module is not DAV-enabled. New reminders can be created in this or any of the calendars belonging to the user in sabre/dav, and reminders can be moved between calendars.
-* The "alarms" section in the reminder-editing page has not been fully implemented.
+Specifically, a lack of standards for VTODO recurrence means that different clients will encode recurrence information differently, ignoring or even overwriting the recurrence information written by other clients. This tool will provide an HTTP interface for specifying recurrence and will make sure that the specification persists regardless of changes made by other clients. See more under [READMORE.md](READMORE.md)
 
 ## Requirements
 See sabre/dav documentation for their requirements (PHP, Composer, etc). Requirements specific to this project include:
