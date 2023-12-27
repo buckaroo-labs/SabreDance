@@ -3,7 +3,7 @@ $pagetitle="Administration";
 include "Hydrogen/pgTemplate.php";
 require('settings.php');
 $headline="<h1>Administration</h1>";
-include 'Hydrogen/elemLogoHeadline.php';  
+
 $conn=mysqli_connect($settings['DBHost'],$settings['DBUser'],$settings['DBPass'],$settings['DBName']) ;
 
 function isPOSTedClean($postVar){
@@ -101,7 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
+
+<div class="w3-main w3-container w3-padding-16" style="margin-left:250px">
 
   <div class="w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
