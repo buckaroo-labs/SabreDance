@@ -10,6 +10,7 @@ include "Hydrogen/pgTemplate.php";
 require_once 'Hydrogen/libDebug.php';
 require_once 'clsDB.php';
 require_once 'common.php';
+require('settings.php');
 //ini_set(opcache.enable,0);
 ?>
 
