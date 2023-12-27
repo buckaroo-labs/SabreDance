@@ -2,6 +2,7 @@
 require("forceHTTPS.php");
 $pagetitle="Log In";
 include "Hydrogen/pgTemplate.php";
+require_once 'Hydrogen/libDebug.php';
 ?>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
