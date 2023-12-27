@@ -2,7 +2,8 @@
 $pagetitle="Administration";
 include "Hydrogen/pgTemplate.php";
 require('settings.php');
-
+$headline="<h1>Administration</h1>";
+include 'Hydrogen/elemLogoHeadline.php';  
 $conn=mysqli_connect($settings['DBHost'],$settings['DBUser'],$settings['DBPass'],$settings['DBName']) ;
 
 function isPOSTedClean($postVar){
