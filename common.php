@@ -1,7 +1,7 @@
 <?php
 //ini_set(opcache.enable,0);
 
-if (session_status() == PHP_SESSION_NONE) session_start();
+//if (session_status() == PHP_SESSION_NONE) session_start();
 
 function decode_scale ($scale_code) {
 	switch ($scale_code) {
