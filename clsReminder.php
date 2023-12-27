@@ -42,12 +42,12 @@ class Reminders {
 		
 		//check first if there are any matching records. Ignore if none, because this may happen with page refresh or bookmark
 		$sql = "SELECT count(*) FROM " . DB::$reminder_table;
-		$sql = $sql . " WHERE sequence=" . $mark_complete . " AND owner='" . $sqlowner . "' ";
+		$sql = $sql . " WHERE sequence=" . $mark_complete . " AND owner='principals/" . $sqlowner . "' ";
 		$result = $dds->setSQL($sql);
 		$result_row = $dds->getNextRow();
 		if ($result_row[0] > 0) {
 			$sql = "SELECT id, recur_float, recur_scale, recur_units, start_date, grace_scale, grace_units, passive_scale, passive_units FROM " . DB::$reminder_table;
-			$sql = $sql . " WHERE sequence=" . $mark_complete . " AND owner='" . $sqlowner . "' ";
+			$sql = $sql . " WHERE sequence=" . $mark_complete . " AND owner='principals/" . $sqlowner . "' ";
 			$result = $dds->setSQL($sql);
 			$result_row = $dds->getNextRow("labeled");	
 			
@@ -95,7 +95,7 @@ class Reminders {
 			$timestamp = (string) time();
 			$sql = $sql . " sequence=" . $result_row['id'] . '000' .  $timestamp . ", ";
 			$sql = $sql . " last_modified='" . DateTimeExt::zdate() . "' ";
-			$sql = $sql . " WHERE id=" . $result_row['id'] . " AND owner='" . $sqlowner . "' ";
+			$sql = $sql . " WHERE id=" . $result_row['id'] . " AND owner='principals/" . $sqlowner . "' ";
 			//echo "<P>SQL:" . $sql . "</P>";
 			$result = $dds->setSQL($sql);
 			if ($push) CalDAV::PushReminderUpdate($result_row['id'],true);
