@@ -1,5 +1,5 @@
 <?php
-ini_set(opcache.enable,0);
+//ini_set(opcache.enable,0);
 
 if (session_status() == PHP_SESSION_NONE) session_start();
 
