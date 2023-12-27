@@ -31,12 +31,12 @@ You'll also need to clone the [Hydrogen](https://github.com/buckaroo-labs/Hydrog
 
 Once all the code is configured, admin.php is available for adding users. To modify users, for now you'll need to perform the updates directly in the database using a database client of some sort (mysql command line or phpMyAdmin).
 
-Use the link on index.php to calendarserver.php to create new calendars under your username (e.g. https://yourdomain.com/dav/calendarserver.php > calendars > yourusername > Create new calendar).
+Use the link on index.php to calendarserver.php to create new calendars under your username (e.g. https://yourdomain.com/dav/calendarserver.php > calendars > yourusername > Create new calendar). If you start creating reminders as a user having no calendar, your reminders will go into a list that is not DAV-enabled, but you can move them (editing them one by one) to a DAV calendar later on.
 
 To enforce or synchronize changes in the reminders recurrence schedule between heterogenous clients, schedule a job that will run "php batch_processing.php"
 
 Feel free to reach out for assistance with this project, with sabre/dav in general, or even client setup (Thunderbird and iOS are working well for me).
 
 ## Future
-Immediate development priorities are functionality for reminders, calendar and address book management.
+Immediate development priorities are functionality for reminders, calendar and address book management, user management.
 
