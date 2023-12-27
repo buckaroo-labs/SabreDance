@@ -86,13 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 	html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 
 
-	table {
+	table.admin {
   		border-collapse: collapse;
 	}
 
-	tr:hover {background-color: #eeEEEE;}
+	table.admin tr:hover {background-color: #eeEEEE;}
 
-	td, th {
+	table.admin td, th {
   		border: 1px solid #dddddd;
   		text-align: left;
   		padding: 8px;
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['username']=='admin') {
 <?php if (isset($_SESSION['username'])) {
 echo '<h2>Database contents</h2>';
 
-		echo '<h3>Registered users:</h3><table id="users" class="sortable"><tr><th>ID</th><th>username</th><th>email</th><th>first name</th><th>last name</th></tr>';
+		echo '<h3>Registered users:</h3><table id="users" class="admin sortable"><tr><th>ID</th><th>username</th><th>email</th><th>first name</th><th>last name</th></tr>';
 		$sql="select id, username, email, first_name, last_name from user";
 		$result = $conn->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
 		while ($row=$result->fetch_assoc()) {
@@ -125,7 +125,7 @@ echo '<h2>Database contents</h2>';
 		}
 		echo "</table>";
 
-		 echo '<h3>Principals :</h3><table id="principals" class="sortable"><tr><th>id</th><th>uri</th><th>email</th><th>display name</th></tr>';
+		 echo '<h3>Principals :</h3><table id="principals" class="admin sortable"><tr><th>id</th><th>uri</th><th>email</th><th>display name</th></tr>';
                  $sql="select id, uri, email, displayname from principals";
                 $result = $conn->query($sql) or die ("Failed to get result for SQL " . $sql .' '. mysqli_error());
                  while ($row=$result->fetch_assoc()) {
