@@ -46,7 +46,7 @@ class CalDAV {
 	  $sql="UPDATE calendarobjects SET calendardata='" . $icalendar . "', etag='" . $newetag 
 		  . "' where calendarid=" . $calendarID . "";
 	  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
-  	  $dds->setSQL;
+  	  $dds->setSQL($sql);
 	  return $newetag;
 	}
 
