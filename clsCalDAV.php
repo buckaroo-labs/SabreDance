@@ -43,7 +43,8 @@ class CalDAV {
 	  //replace the calendardata BLOB, set a new etag, and return it
 	  global $dds;
 	  $newetag=md5(uniqid(mt_rand(), true));
-	  $sql="UPDATE calendarobjects SET calendardata='" . $etag . "', etag='" . $newetag . "' where calendarid=" . $calendarID . "";
+	  $sql="UPDATE calendarobjects SET calendardata='" . $icalendar . "', etag='" . $newetag 
+		  . "' where calendarid=" . $calendarID . "";
 	  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
   	  $dds->setSQL;
 	  return $newetag;
