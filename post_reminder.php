@@ -172,7 +172,7 @@ if ($_POST['ID']=="new") {
 			$sql = "insert into calendarobjects(uri,calendarid,componenttype,uid,size) ";
 			//we'll update the size, calendardata, etag, and lastmodified later
 			$sql = " values('" . $uid . ".ics'," . $_POST['CALENDAR_ID'] . ",'VTODO','" . $uid . ",99)";
-			$result = $dds->setSQL($SQL);
+			$result = $dds->setSQL($sql);
 		}
 	}
 
