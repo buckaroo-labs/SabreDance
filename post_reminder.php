@@ -168,11 +168,12 @@ if ($_POST['ID']=="new") {
 	$newID=$dds->getInt("select max(id) from " . DB::$reminder_table . " where owner='principals/" .  $_SESSION['username'] . "'");
 	if(isset($_POST['CALENDAR_ID'])) {
 		if($_POST['CALENDAR_ID']!=0)	{
-			CalDAV::PushReminderUpdate($newID,true);
+
 			$sql = "insert into calendarobjects(uri,calendarid,componenttype,uid,size) ";
 			//we'll update the size, calendardata, etag, and lastmodified later
 			$sql .= " values('" . $uid . ".ics'," . $_POST['CALENDAR_ID'] . ",'VTODO','" . $uid . "',99)";
 			$result = $dds->setSQL($sql);
+			CalDAV::PushReminderUpdate($newID,true);
 		}
 	}
 
