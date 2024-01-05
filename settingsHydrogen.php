@@ -39,6 +39,6 @@ $settings['footer_text2']='<p><a target="_blank" href="https://github.com/buckar
 
 $settings['prompt_reg']='0';
 $hideSearchForm = true;
-$settings['DEBUG']=false;
+$settings['DEBUG']=true;
 $settings['login_page']='login.php';
 ?>
