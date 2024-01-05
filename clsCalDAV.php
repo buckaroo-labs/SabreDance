@@ -151,7 +151,7 @@ class CalDAV {
 					if (!$ematch) {
 						//Pull the event from the remote server for insert or update
 						debug("PullCalendarUpdates:etag '" .$etags[$j]['etag'] . "' unmatched","0/".basename(__FILE__));
-						debug("PullCalendarUpdates:Reading event href=" .$etags[$j]['href'] ,basename(__FILE__));
+						debug("PullCalendarUpdates:Reading event href=" .$etags[$j]['uri'] ,basename(__FILE__));
 						$event=CalDAV::GetCalObjectByID($etags[$j]['id']);
 						debug("PullCalendarUpdates:Event data=\n" .$event . "\n",basename(__FILE__));
 						$parsed=CalDAV::parseEvent($event);
