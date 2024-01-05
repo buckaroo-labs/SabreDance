@@ -154,19 +154,26 @@ function common_post_proc() {
 		
 if ($_POST['ID']=="new") {
 	$timestamp = (string) time();	
+	$uid = CalDAV::uid();
 	$sqlb = new SQLBuilder("INSERT");
 	$sqlb->setTableName(DB::$reminder_table);
 
 	$sqlb->addColumn("sequence",$timestamp);
 	$sqlb->addColumn("created",DateTimeExt::zdate());
-	$sqlb->addColumn("uid",CalDAV::uid());
+	$sqlb->addColumn("uid",$uid);
 	if(isset($_POST['CALENDAR_ID'])) {
 		if($_POST['CALENDAR_ID']!=0)	$sqlb->addColumn("calendar_id",$_POST['CALENDAR_ID']);
 	}
 	common_post_proc();
 	$newID=$dds->getInt("select max(id) from " . DB::$reminder_table . " where owner='principals/" .  $_SESSION['username'] . "'");
 	if(isset($_POST['CALENDAR_ID'])) {
-		if($_POST['CALENDAR_ID']!=0)	CalDAV::PushReminderUpdate($newID,true);
+		if($_POST['CALENDAR_ID']!=0)	{
+			CalDAV::PushReminderUpdate($newID,true);
+			$sql = "insert into calendarobjects(uri,calendarid,componenttype,uid,size) ";
+			//we'll update the size, calendardata, etag, and lastmodified later
+			$sql = " values('" . $uid . ".ics'," . $_POST['CALENDAR_ID'] . ",'VTODO','" . $uid . ",99)";
+			$result = $dds->setSQL($SQL);
+		}
 	}
 
 } else {
