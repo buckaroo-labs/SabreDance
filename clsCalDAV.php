@@ -52,7 +52,8 @@ class CalDAV {
 
 	  $dateNow = new DateTimeImmutable();
 	  $sql="UPDATE calendarobjects SET calendardata='" . $mysqli->real_escape_string($icalendar) . "', etag='" . $newetag 
-		  . "' , lastmodified=" . $dateNow->getTimestamp() . " where calendarid=" . $calendarID . " and uid='" . $rem_uid . "' ";
+		  . "' , lastmodified=" . $dateNow->getTimestamp() 
+		  . " where calendarid=" . $calendarID . " and uid='" . $rem_uid . "' ";
 	  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
   	  $dds->setSQL($sql);
 	  return $newetag;
