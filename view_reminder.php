@@ -51,7 +51,11 @@ if (isset($_SESSION['username'])) {
 			$output .= "<tr><td>Notes: </td><td>" . $remdata['description'] ."</td><tr>";	
 		}
 	}
-
+	if (isset($remdata['uid'])) {
+		if (!is_null($remdata['uid'])) {
+			$output .= '<tr><td>UID: </td><td>' . $remdata['uid'] ."</td><tr>";	
+		}
+	}
 	if (isset($remdata['calendar_id'])) {
 		$calendar_name='Default';
 		if (!is_null($remdata['calendar_id'])) {
@@ -179,6 +183,7 @@ if (isset($_SESSION['username'])) {
 	} else {
 		$tod_end= "23:59";
 	}
+
 	$output .="</table>";
 	if ($implementation_note) $output .= "<P>(* = not implemented)</P>" ;
 	echo '<p name="reminder_description">' . $output . "</p>" . '<p><a href="edit_reminder.php?ID=' . $remdata['id'] . '">Edit</a></p>';
