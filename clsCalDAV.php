@@ -221,7 +221,8 @@ class CalDAV {
 								$parsed['X-CADENCE-SEQUENCE']="";
 							}
 							if ($result_row[1] != $parsed['X-CADENCE-SEQUENCE']) {
-								$incoming_completed=false;
+								//2024-01-05 turning this line off
+								//$incoming_completed=false;
 								debug("Incoming update (" . $parsed['X-CADENCE-SEQUENCE'] . ") has unmatched sequence (expected " . $result_row[1] . ")",basename(__FILE__));
 							}
 							if ($incoming_completed) {
