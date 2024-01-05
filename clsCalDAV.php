@@ -213,7 +213,7 @@ class CalDAV {
 							}
 							if ($result_row[1] != $parsed['X-CADENCE-SEQUENCE']) {
 								$incoming_completed=false;
-								debug("Incoming update has unmatched sequence",basename(__FILE__));
+								debug("Incoming update (" . $parsed['X-CADENCE-SEQUENCE'] . ") has unmatched sequence (expected " . $result_row[1] . ")",basename(__FILE__));
 							}
 							if ($incoming_completed) {
 								Reminders::MarkComplete($parsed['X-CADENCE-SEQUENCE'],true,$result_row[2]);
