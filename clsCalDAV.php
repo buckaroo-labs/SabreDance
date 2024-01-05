@@ -41,9 +41,14 @@ class CalDAV {
 
 	public static function DoPUTRequest( $calendarID, $rem_uid, $icalendar, $etag = null ) {
 	  //replace the calendardata BLOB, set a new etag, and return it
+	  /*A future version of the Hydrogen library will support mysqli_real_escape_string, but for now
+		we're going to make do with this:*/
+  	  $mysqli= new mysqli($settings['DEFAULT_DB_HOST'], $settings['DEFAULT_DB_USER'], $settings['DEFAULT_DB_PASS'], 
+			      $settings['DEFAULT_DB_INST']);
+	  	
 	  global $dds;
 	  $newetag=md5(uniqid(mt_rand(), true));
-	  $sql="UPDATE calendarobjects SET calendardata='" . $icalendar . "', etag='" . $newetag 
+	  $sql="UPDATE calendarobjects SET calendardata='" . $mysqli->real_escape_string($icalendar) . "', etag='" . $newetag 
 		  . "' where calendarid=" . $calendarID . "";
 	  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
   	  $dds->setSQL($sql);
