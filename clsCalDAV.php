@@ -44,8 +44,7 @@ class CalDAV {
 	  /*A future version of the Hydrogen library will more directly support mysqli_real_escape_string, but for now
 		we're going to make do with this:*/
 	  //global $settings;
-  	  //$mysqli= new mysqli($settings['DEFAULT_DB_HOST'], $settings['DEFAULT_DB_USER'], $settings['DEFAULT_DB_PASS'], 
-			      $settings['DEFAULT_DB_INST']);
+  	  //$mysqli= new mysqli($settings['DEFAULT_DB_HOST'], $settings['DEFAULT_DB_USER'], $settings['DEFAULT_DB_PASS'], $settings['DEFAULT_DB_INST']);
 	  	
 	  global $dds;
 	  $mysqli= $dds->getDBConnection();
