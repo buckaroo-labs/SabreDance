@@ -40,7 +40,8 @@ class CalDAV {
 	}
 
 	public static function DoPUTRequest( $calendarID, $rem_uid, $icalendar, $etag = null ) {
-	  //replace the calendardata BLOB, set a new etag, and return it
+	  //insert or replace the calendardata BLOB, set a new etag, and return it
+		
 	  /*A future version of the Hydrogen library will more directly support mysqli_real_escape_string, but for now
 		we're going to make do with this:*/
 	  global $settings;
@@ -49,12 +50,35 @@ class CalDAV {
 
 	  $newetag=md5(uniqid(mt_rand(), true));
 
+	  $sql="SELECT max(uri) from calendarobjects where uid='" . $rem_uid . " and calendarid=" . $calendarID ;
+	  $rem_uri = $dds->getString($sql);
+
 	  $dateNow = new DateTimeImmutable();
-	  $sql="UPDATE calendarobjects SET calendardata='" . $mysqli->real_escape_string($icalendar) . "', etag='" . $newetag 
-		  . "' , lastmodified=" . $dateNow->getTimestamp() . ", size=" . strlen($mysqli->real_escape_string($icalendar))
-		  . " where calendarid=" . $calendarID . " and uid='" . $rem_uid . "' ";
-	  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
-  	  $dds->setSQL($sql);
+	  if (!is_null($rem_uri)) {
+		  $sql="UPDATE calendarobjects SET calendardata='" . $mysqli->real_escape_string($icalendar) . "', etag='" . $newetag 
+			  . "' , lastmodified=" . $dateNow->getTimestamp() . ", size=" . strlen($mysqli->real_escape_string($icalendar))
+			  . " where calendarid=" . $calendarID . " and uid='" . $rem_uid . "' ";
+		  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
+	  	  $dds->setSQL($sql);
+		  $DAVop = 2;
+
+	  } else {
+		//new item
+  		$rem_uri=$rem_uid . ".ics";
+		$DAVop = 1;
+		$sql="INSERT INTO calendarobjects (calendardata,uri,calendarid,lastmodified,etag,size,componenttype,uid)
+			  VALUES ('". $mysqli->real_escape_string($icalendar) . "','" . $rem_uri . "'," . $calendarID . "," 
+			. $dateNow->getTimestamp() . 	",'" 
+			. $newetag . "'," . strlen($mysqli->real_escape_string($icalendar))
+			  . ",'VTODO','" . $rem_uid . "')";
+  		$dds->setSQL($sql);
+    		
+  	  }
+	  $sql="UPDATE calendars SET synctoken=synctoken+1 where id=" . $calendarID ;
+	  $dds->setSQL($sql);
+	  $sql="INSERT INTO calendarchanges (uri,synctoken,calendarid,operation) 
+		select '" . $rem_uri . ",synctoken,id," . $DAVop . " from calendars where id=" . $calendarID";
+	  $dds->setSQL($sql);		
 	  return $newetag;
 	}
 
