@@ -56,7 +56,8 @@ class CalDAV {
 	  $dateNow = new DateTimeImmutable();
 	  if (!is_null($rem_uri)) {
 		  $sql="UPDATE calendarobjects SET calendardata='" . $mysqli->real_escape_string($icalendar) . "', etag='" . $newetag 
-			  . "' , lastmodified=" . $dateNow->getTimestamp() . ", size=" . strlen($mysqli->real_escape_string($icalendar))
+			  . "' , lastmodified=" . $dateNow->getTimestamp() . ", 
+     		        size=" . strlen($mysqli->real_escape_string($icalendar))
 			  . " where calendarid=" . $calendarID . " and uid='" . $rem_uid . "' ";
 		  if (isset($etag)) $sql.=" and etag='" . $etag . "'";
 	  	  $dds->setSQL($sql);
@@ -77,7 +78,7 @@ class CalDAV {
 	  $sql="UPDATE calendars SET synctoken=synctoken+1 where id=" . $calendarID ;
 	  $dds->setSQL($sql);
 	  $sql="INSERT INTO calendarchanges (uri,synctoken,calendarid,operation) 
-		select '" . $rem_uri . ",synctoken,id," . $DAVop . " from calendars where id=" . $calendarID;
+		select '" . $rem_uri . "',synctoken,id," . $DAVop . " from calendars where id=" . $calendarID;
 	  $dds->setSQL($sql);		
 	  return $newetag;
 	}
