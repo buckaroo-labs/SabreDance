@@ -98,7 +98,7 @@ class CalDAV {
 			$icalendar = $reminder->serialize();
 			debug (__FILE__ . ": PushReminderUpdate: ICS formatted output: \n" . $icalendar . "\n",basename(__FILE__));
 			if (!$force) {
-				$newETAG = $this->DoPUTRequest($result_row["calendar_id"] , $result_row["rem_uid"] , $icalendar, '"' .$result_row["etag"] . '"');
+				$newETAG = CalDAV::DoPUTRequest($result_row["calendar_id"] , $result_row["rem_uid"] , $icalendar, '"' .$result_row["etag"] . '"');
 			} else {
 				//force update
 				debug (__FILE__ . ": PushReminderUpdate: target URL: " . $result_row["calendar_id"] . "/" . $result_row["rem_uid"] ,basename(__FILE__) );
