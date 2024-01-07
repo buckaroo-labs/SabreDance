@@ -114,7 +114,7 @@ class Reminder {
 		if (isset($_SESSION['username'])) $sqlowner=$_SESSION['username'];
 		require_once ("Hydrogen/clsDataSource.php");
 		global $dds;
-		$sql= "SELECT * FROM " . DB::$reminder_table . " WHERE id= $ID AND owner ='" . $sqlowner . "'";
+		$sql= "SELECT * FROM " . DB::$reminder_table . " WHERE id= $ID AND owner ='principals/" . $sqlowner . "'";
 		$result = $dds->setSQL($sql);
 		$result_row = $dds->getNextRow("labeled");
 		if($result_row)  $this->reminder = $result_row;  
