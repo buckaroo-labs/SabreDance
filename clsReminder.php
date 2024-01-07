@@ -51,7 +51,7 @@ class Reminders {
 			$result = $dds->setSQL($sql);
 			$result_row = $dds->getNextRow("labeled");	
 			
-			$sql =  "UPDATE " . DB::$reminder_table . " SET complete_date='" . date("Y-m-d H:i:s") . "', ";
+			$sql =  "UPDATE " . DB::$reminder_table . " SET ";
 			
 			//check for recurrence
 			if (!is_null($result_row['recur_units'])) {
@@ -90,7 +90,7 @@ class Reminders {
 				
 			} else {
 				//non-recurring reminder will be expired
-				$sql = $sql . " end_date='" . date("Y-m-d H:i:s",strtotime("-1 second")) . "', ";
+				$sql = $sql . "complete_date='" . date("Y-m-d H:i:s") . "', end_date='" . date("Y-m-d H:i:s",strtotime("-1 second")) . "', ";
 			}
 			$timestamp = (string) time();
 			$sql = $sql . " sequence=" . $result_row['id'] . '000' .  $timestamp . ", ";
