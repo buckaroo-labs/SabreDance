@@ -4,7 +4,7 @@ class Reminders {
 	
 	public static function RemindersSQL($where="1=1", $mine=true) {
 		$sql= "SELECT * FROM " . DB::$reminder_table . " WHERE  ". $where ;
-		if ($mine) $sql .= " AND owner ='" . $_SESSION['username'] . "'";
+		if ($mine) $sql .= " AND owner ='principals/" . $_SESSION['username'] . "'";
 		return $sql;
 	}
 	public static function Delete($id, $push=false, $owner="") {
