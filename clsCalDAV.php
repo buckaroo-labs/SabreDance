@@ -77,7 +77,7 @@ class CalDAV {
 	  $sql="UPDATE calendars SET synctoken=synctoken+1 where id=" . $calendarID ;
 	  $dds->setSQL($sql);
 	  $sql="INSERT INTO calendarchanges (uri,synctoken,calendarid,operation) 
-		select '" . $rem_uri . ",synctoken,id," . $DAVop . " from calendars where id=" . $calendarID";
+		select '" . $rem_uri . ",synctoken,id," . $DAVop . " from calendars where id=" . $calendarID;
 	  $dds->setSQL($sql);		
 	  return $newetag;
 	}
