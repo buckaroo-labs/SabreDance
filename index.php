@@ -229,6 +229,9 @@ if (!$failed) {
 				try {
 				  echo "<BR>Trying setup file: " . str_replace('vendor/sabre/dav/examples/sql/','',$location);
 				  $result=$mysqli->multi_query($commands);
+				  //https://stackoverflow.com/questions/50819932/php-mysqli-wait-for-the-multi-query-queries-to-complete
+				  while (mysqli_next_result($mysqli)); // Flush out the results.
+
 				  if ($result===false) {
 					  $errString= mysqli_error($mysqli);
 					  if (strpos('already exists',$errString)===false) {
@@ -247,6 +250,8 @@ if (!$failed) {
 				$commands = file_get_contents('mysql.sql');
 				echo "<BR>Trying add-on SQL setup file";
 				  $result=$mysqli->multi_query($commands);
+			          //https://stackoverflow.com/questions/50819932/php-mysqli-wait-for-the-multi-query-queries-to-complete
+				  while (mysqli_next_result($mysqli)); // Flush out the results.
 				  if ($result===false) {
 					  $errString= mysqli_error($mysqli);
 					  if (strpos('already exists',$errString)===false) {
