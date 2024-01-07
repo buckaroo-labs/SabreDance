@@ -50,7 +50,7 @@ class CalDAV {
 
 	  $newetag=md5(uniqid(mt_rand(), true));
 
-	  $sql="SELECT max(uri) from calendarobjects where uid='" . $rem_uid . " and calendarid=" . $calendarID ;
+	  $sql="SELECT max(uri) from calendarobjects where uid='" . $rem_uid . "' and calendarid=" . $calendarID ;
 	  $rem_uri = $dds->getString($sql);
 
 	  $dateNow = new DateTimeImmutable();
