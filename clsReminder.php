@@ -56,6 +56,8 @@ class Reminders {
 			//check for recurrence
 			if (!is_null($result_row['recur_units'])) {
 				debug("recurring task completed");
+				//we don't mark it complete so much as advance the due and start dates
+				$sql .=" complete_date=null, ";
 				$recurscale = decode_scale($result_row['recur_scale']);
 				$gracescale = decode_scale($result_row['grace_scale']);
 				$passivescale = decode_scale($result_row['passive_scale']);
